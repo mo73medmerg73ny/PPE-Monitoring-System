@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+ultralytics
+opencv-python-headless
+psycopg2-binary
+streamlit
+websocket-client
+numpy
+python-multipart
