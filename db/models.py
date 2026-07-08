@@ -15,7 +15,7 @@ def db_init():
                 id SERIAL PRIMARY KEY,
                 person_id INTEGER,
                 violation_type TEXT,
-                timestamp timestamp TIMESTAMP DEFAULT NOW(),
+                timestamp TIMESTAMP DEFAULT NOW(),
                 image_path TEXT
                 )
      
