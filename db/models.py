@@ -5,13 +5,13 @@ def db_init():
     conn = psycopg2.connect(
         host=os.getenv("DB_HOST", "localhost"),
         database=os.getenv("DB_NAME", "ppe_db"),
-        user=os.getenv("DB_USER" "postgres"),
+        user=os.getenv("DB_USER", "postgres"),
         password=os.getenv("DB_PASSWORD", "1234")
         )
     cur = conn.cursor()
 
     cur.execute("""
-       CREATE TABLE IF NOT EXISIS violations(
+       CREATE TABLE IF NOT EXISTS violations(
                 id SERIAL PRIMARY KEY,
                 person_id INTEGER,
                 violation_type TEXT,
@@ -30,7 +30,7 @@ def insert_violation(person_id, violation_type, time, image_path):
     conn = psycopg2.connect(
         host=os.getenv("DB_HOST", "localhost"),
         database=os.getenv("DB_NAME", "ppe_db"),
-        user=os.getenv("DB_USER" "postgres"),
+        user=os.getenv("DB_USER", "postgres"),
         password=os.getenv("DB_PASSWORD", "1234")
         )
     cur = conn.cursor()
@@ -48,7 +48,7 @@ def get_all_violation():
     conn = psycopg2.connect(
         host=os.getenv("DB_HOST", "localhost"),
         database=os.getenv("DB_NAME", "ppe_db"),
-        user=os.getenv("DB_USER" "postgres"),
+        user=os.getenv("DB_USER", "postgres"),
         password=os.getenv("DB_PASSWORD", "1234")
         )
     cur = conn.cursor()
@@ -67,7 +67,7 @@ def get_violation_by_date(date):
     conn = psycopg2.connect(
         host=os.getenv("DB_HOST", "localhost"),
         database=os.getenv("DB_NAME", "ppe_db"),
-        user=os.getenv("DB_USER" "postgres"),
+        user=os.getenv("DB_USER", "postgres"),
         password=os.getenv("DB_PASSWORD", "1234")
         )
     cur = conn.cursor()
@@ -87,7 +87,7 @@ def get_violation_by_id(person_id):
     conn = psycopg2.connect(
         host=os.getenv("DB_HOST", "localhost"),
         database=os.getenv("DB_NAME", "ppe_db"),
-        user=os.getenv("DB_USER" "postgres"),
+        user=os.getenv("DB_USER", "postgres"),
         password=os.getenv("DB_PASSWORD", "1234")
         )
     cur = conn.cursor()
