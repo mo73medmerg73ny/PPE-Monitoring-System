@@ -1,13 +1,11 @@
 import psycopg2 
 import os 
 
+def get_conn():
+    return psycopg2.connect(os.getenv("DATABASE_URL"))
+
 def db_init():
-    conn = psycopg2.connect(
-        host=os.getenv("DB_HOST", "localhost"),
-        database=os.getenv("DB_NAME", "ppe_db"),
-        user=os.getenv("DB_USER", "postgres"),
-        password=os.getenv("DB_PASSWORD", "1234")
-        )
+    conn = get_conn()
     cur = conn.cursor()
 
     cur.execute("""
@@ -27,12 +25,7 @@ def db_init():
 
 
 def insert_violation(person_id, violation_type, time, image_path):
-    conn = psycopg2.connect(
-        host=os.getenv("DB_HOST", "localhost"),
-        database=os.getenv("DB_NAME", "ppe_db"),
-        user=os.getenv("DB_USER", "postgres"),
-        password=os.getenv("DB_PASSWORD", "1234")
-        )
+    conn = get_conn()
     cur = conn.cursor()
 
     cur.execute(
@@ -45,12 +38,7 @@ def insert_violation(person_id, violation_type, time, image_path):
     cur.close()
 
 def get_all_violation():
-    conn = psycopg2.connect(
-        host=os.getenv("DB_HOST", "localhost"),
-        database=os.getenv("DB_NAME", "ppe_db"),
-        user=os.getenv("DB_USER", "postgres"),
-        password=os.getenv("DB_PASSWORD", "1234")
-        )
+    conn = get_conn()
     cur = conn.cursor()
 
     cur.execute(
@@ -64,12 +52,7 @@ def get_all_violation():
     return [{"person_id" : r[0], "violation_type" : r[1], "timestamp" : r[2], "image_path" : r[3]} for r in rows]
 
 def get_violation_by_date(date):
-    conn = psycopg2.connect(
-        host=os.getenv("DB_HOST", "localhost"),
-        database=os.getenv("DB_NAME", "ppe_db"),
-        user=os.getenv("DB_USER", "postgres"),
-        password=os.getenv("DB_PASSWORD", "1234")
-        )
+    conn = get_conn()
     cur = conn.cursor()
 
     cur.execute(
@@ -84,12 +67,7 @@ def get_violation_by_date(date):
     return  [{"person_id" : r[0], "violation_type" : r[1], "image_path" : r[2]} for r in rows]
   
 def get_violation_by_id(person_id):
-    conn = psycopg2.connect(
-        host=os.getenv("DB_HOST", "localhost"),
-        database=os.getenv("DB_NAME", "ppe_db"),
-        user=os.getenv("DB_USER", "postgres"),
-        password=os.getenv("DB_PASSWORD", "1234")
-        )
+    conn = get_conn()
     cur = conn.cursor()
 
     cur.execute(
@@ -102,3 +80,4 @@ def get_violation_by_id(person_id):
     cur.close()
 
     return [{"violation_type" : r[0], "timestamp" : r[1], "image_path" : r[2]} for r in rows]
+
