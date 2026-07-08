@@ -1,11 +1,12 @@
 import psycopg2 
+import os 
 
 def db_init():
     conn = psycopg2.connect(
-        host="localhost",
-        database="ppe_db",
-        user="postgres",
-        password="1234"
+        host=os.getenv("DB_HOST", "localhost"),
+        database=os.getenv("DB_NAME", "ppe_db"),
+        user=os.getenv("DB_USER" "postgres"),
+        password=os.getenv("DB_PASSWORD", "1234")
         )
     cur = conn.cursor()
 
@@ -27,10 +28,10 @@ def db_init():
 
 def insert_violation(person_id, violation_type, time, image_path):
     conn = psycopg2.connect(
-        host="localhost",
-        database="ppe_db",
-        user="postgres",
-        password="1234"
+        host=os.getenv("DB_HOST", "localhost"),
+        database=os.getenv("DB_NAME", "ppe_db"),
+        user=os.getenv("DB_USER" "postgres"),
+        password=os.getenv("DB_PASSWORD", "1234")
         )
     cur = conn.cursor()
 
@@ -45,10 +46,10 @@ def insert_violation(person_id, violation_type, time, image_path):
 
 def get_all_violation():
     conn = psycopg2.connect(
-        host="localhost",
-        database="ppe_db",
-        user="postgres",
-        password="1234"
+        host=os.getenv("DB_HOST", "localhost"),
+        database=os.getenv("DB_NAME", "ppe_db"),
+        user=os.getenv("DB_USER" "postgres"),
+        password=os.getenv("DB_PASSWORD", "1234")
         )
     cur = conn.cursor()
 
@@ -64,10 +65,10 @@ def get_all_violation():
 
 def get_violation_by_date(date):
     conn = psycopg2.connect(
-        host="localhost",
-        database="ppe_db",
-        user="postgres",
-        password="1234"
+        host=os.getenv("DB_HOST", "localhost"),
+        database=os.getenv("DB_NAME", "ppe_db"),
+        user=os.getenv("DB_USER" "postgres"),
+        password=os.getenv("DB_PASSWORD", "1234")
         )
     cur = conn.cursor()
 
@@ -84,10 +85,10 @@ def get_violation_by_date(date):
   
 def get_violation_by_id(person_id):
     conn = psycopg2.connect(
-        host="localhost",
-        database="ppe_db",
-        user="postgres",
-        password="1234"
+        host=os.getenv("DB_HOST", "localhost"),
+        database=os.getenv("DB_NAME", "ppe_db"),
+        user=os.getenv("DB_USER" "postgres"),
+        password=os.getenv("DB_PASSWORD", "1234")
         )
     cur = conn.cursor()
 
