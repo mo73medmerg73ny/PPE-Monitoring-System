@@ -16,4 +16,7 @@ COPY . .
 
 EXPOSE 8000
 
+ARG DATABASE_URL
+ENV DATABASE_URL=$DATABASE_URL
+
 CMD  ["uvicorn", "main:app" , "--host", "0.0.0.0", "--port", "8000"]
