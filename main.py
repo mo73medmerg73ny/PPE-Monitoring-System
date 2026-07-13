@@ -15,9 +15,9 @@ db_init()
 detector = PPEDetector()
 
 app = FastAPI(
-    title= '',
-    description= '',
-    version= '1.0.0'
+    title='PPE Monitoring System',
+    description='Real-time PPE detection',
+    version='1.0.0'
 )
 
 app.include_router(violation_router)
